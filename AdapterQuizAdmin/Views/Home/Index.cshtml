@@ -1,31 +1,101 @@
 ﻿@{
-    ViewBag.Title = "Home Page";
+    ViewBag.Title = "Add Questions and Options";
 }
-
-<div class="jumbotron">
-    <h1>ASP.NET</h1>
-    <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS and JavaScript.</p>
-    <p><a href="http://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
+<br/>
+<br/>
+<br/>
+@if (ViewBag.Message != null)
+{
+<span class="alert-success">@ViewBag.Message</span>
+}
+<div  class="container">
+    <div class="row">
+        <div class="col-md-7">
+            <span><strong>Please enter the number of questions you want to add</strong></span>
+        </div>
+        <div class="col-md-2">
+            <input class="form-control" type="number" id="numberOfQuestions" max="20"/>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-7">
+            <span><strong> Please enter the number of options you want to provide for each question</strong></span>
 </div>
+        <div class="col-md-2">
+            <input class="form-control" type="number" id="options" max="5" />
+        </div>
+        
+    </div>
+    <div class="row">
+        <div class="col-md-2 pull-right">
+            <button class="btn btn-primary" id="generateQuestionsBtn" title="Generate Questions">Generate Questions</button>
+        </div>
+    </div>
+    <!--class="needs-validation" novalidate-->
+    <form method="post" action="~/Home/CreateQuestionsWithOptions" >
+        <div id="questionsDiv">
 
-<div class="row">
-    <div class="col-md-4">
-        <h2>Getting started</h2>
-        <p>
-            ASP.NET MVC gives you a powerful, patterns-based way to build dynamic websites that
-            enables a clean separation of concerns and gives you full control over markup
-            for enjoyable, agile development.
-        </p>
-        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>
-    </div>
-    <div class="col-md-4">
-        <h2>Get more libraries</h2>
-        <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
-        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301866">Learn more &raquo;</a></p>
-    </div>
-    <div class="col-md-4">
-        <h2>Web Hosting</h2>
-        <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
-        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
-    </div>
-</div>
+
+        </div>
+        <div id="submitDiv" style="display:none">
+            <div class="row"><div class="col-md-2 pull-right">
+    <button type="submit" class="btn btn-primary form-control">Create Questions</button>
+</div></div>
+
+            </div>
+    </form>
+</div> 
+<script>
+    //(function () {
+    //    'use strict';
+    //    window.addEventListener('load', function () {
+    //        // Fetch all the forms we want to apply custom Bootstrap validation styles to
+    //        var forms = document.getElementsByClassName('needs-validation');
+    //        // Loop over them and prevent submission
+    //        var validation = Array.prototype.filter.call(forms, function (form) {
+    //            form.addEventListener('submit', function (event) {
+    //                if (form.checkValidity() === false) {
+    //                    event.preventDefault();
+    //                    event.stopPropagation();
+    //                }
+    //                form.classList.add('was-validated');
+    //            }, false);
+    //        });
+    //    }, false);
+    //})();
+    $(document).ready(function () {
+
+        $("#generateQuestionsBtn").on("click", function () {
+            
+            if(($("#options").val()!='' && $("#options").val()!=0) && ($("#numberOfQuestions").val()!='' && $("#numberOfQuestions").val()!=0))
+            {
+                var html = "";
+                for (var questions=0;questions<$("#numberOfQuestions").val();questions++)
+                {
+                    html = html + "<div class='form-row' style='margin-top: 12px; margin-bottom: 12px;'><div class='col-md-12'><div class='row' style='margin-top: 12px; margin-bottom: 12px;'><div class='col-md-2'><span><strong>Question:"+questions+"</strong></span></div><div class='col-md-10'><input type='text' required name='questionId[" + questions + "]' class='form-control is-valid'/></div></div>";
+                    
+                    for (var options = 0; options < $("#options").val() ; options++)
+                    {
+                        html=html + "<div class='row'><div class='col-md-2'><span><strong>"
+                        if(options==0)
+                        {
+                            html=html+"Correct Option";
+                        }
+                        else{
+                            html=html+"Wrong Option";
+                        }
+                        html = html + "</strong> </span></div><div class='col-md-3'><input type='text' required name='answerId[" + questions + "][" + options + "]' class='form-control is-valid'/></div></div>";
+                    }
+                    html+="</div></div>"
+                }
+
+                $("#questionsDiv").html(html);
+                $("#submitDiv").show();
+            }
+
+
+        });
+
+    });
+</script>
+

@@ -10,9 +10,15 @@ namespace AdapterQuizAdmin.Controllers
     {
         public ActionResult Index()
         {
+            ViewBag.Message = null;
             return View();
         }
+        public ActionResult CreateQuestionsWithOptions()
+        {
+            ViewBag.Message = "Your Questions created Successfully.";
 
+            return View("index");
+        }
         public ActionResult About()
         {
             ViewBag.Message = "Your application description page.";
