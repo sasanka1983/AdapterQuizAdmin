@@ -5,8 +5,6 @@ VisualStudioVersion = 14.0.24720.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AdapterQuizAdmin", "AdapterQuizAdmin\AdapterQuizAdmin.csproj", "{05FBFC7F-195F-4269-8FFA-04ED7B4D3C6A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataLayer", "..\DataLayer\DataLayer.csproj", "{1FB727EA-0957-4391-B912-664349DFB06F}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -17,10 +15,6 @@ Global
 		{05FBFC7F-195F-4269-8FFA-04ED7B4D3C6A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{05FBFC7F-195F-4269-8FFA-04ED7B4D3C6A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{05FBFC7F-195F-4269-8FFA-04ED7B4D3C6A}.Release|Any CPU.Build.0 = Release|Any CPU
-		{1FB727EA-0957-4391-B912-664349DFB06F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{1FB727EA-0957-4391-B912-664349DFB06F}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{1FB727EA-0957-4391-B912-664349DFB06F}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{1FB727EA-0957-4391-B912-664349DFB06F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
